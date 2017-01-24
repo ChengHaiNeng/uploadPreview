@@ -1,0 +1,31 @@
+<script type="text/javascript" src="./uploadPreview.js"></script>
+<script type="text/javascript" src="{$Think.config.COMMON_URL}Js/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript">
+                var p_num = 1; //相册计数器
+                function add_item(){   
+                    var s = "<tr><td><span style='cursor:pointer;' onclick='$(this).parent().parent().remove()'>[-]</span>商品相册</td><td><input type='file' name='goods_pics[]' id='goods_pics_"+p_num+"'/><div id='goods_pics_dv_"+p_num+"'><img src='' alt='' width='160' height='160' id='goods_pics_im_"+p_num+"'/></div></td></tr>";
+                        $('#gallery-tab-tb').append(s);
+                        //设置立即显示上传好的图片效果
+                    new uploadPreview({ UpBtn: "goods_pics_"+p_num, DivShow: "goods_pics_dv_"+p_num, ImgShow: "goods_pics_im_"+p_num });
+                    p_num++;  //每增加一个相册，计数器的值要累加
+                }
+                </script>
+
+				
+<table border="1" width="100%" class="table_a" id="gallery-tab-tb"
+                    style="display:none;"
+                >
+                    <tr>
+                        <td><span style='cursor:pointer;' onclick="add_item()">[+]</span>商品相册</td>
+                        <td><input type='file' name='goods_pics[]' id="goods_pics_0" />
+                        <div id="goods_pics_dv_0"><img src="" alt="" width="160" height="160" id="goods_pics_im_0"/></div>
+                        </td>
+                    </tr>
+
+                </table>
+<script type="text/javascript">
+                $(function(){
+                    new uploadPreview({ UpBtn: "goods_pics_0", DivShow: "goods_pics_dv_0", ImgShow: "goods_pics_im_0" });
+                });
+                </script>				
